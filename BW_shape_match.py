@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 from math import atan2, cos, sin, sqrt, pi
 import math
+import datetime
 
 def getCentermass(rawimg):
     mass_y,mass_x = np.where(rawimg!=0)
@@ -85,4 +86,11 @@ def SFVMatchTemplate(fn0,fn1):
     cv2.imwrite("python_match.png",res)
     return res
 
-result  = SFVMatchTemplate('Binary_coins.png','1.png')
+tot = 50
+start = datetime.datetime.now()
+for i in range(tot):
+    result  = SFVMatchTemplate('Binary_coins.png','1.png')
+end = datetime.datetime.now()
+elapsed = end - start
+rate = (elapsed.seconds*1000+elapsed.microseconds/1000)/tot
+print("PY :",rate," milliseconds / img")

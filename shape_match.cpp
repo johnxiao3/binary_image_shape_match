@@ -174,10 +174,11 @@ int main( int argc, char** argv ) {
     for(int i=0;i<totcount;i++)
         SFVMatchTemplate("Binary_coins.png","1.png");
 
-        auto end = steady_clock::now() ;
+    auto end = steady_clock::now() ;
 
-    std::cout << "that took " << duration_cast<milliseconds>(end-start).count()
-              << " milliseconds\n" ;
+    double a = duration_cast<milliseconds>(end-start).count();
+    cout << "CPP: " << a/totcount
+              << " milliseconds / img\n" ;
 
     return EXIT_SUCCESS;
 }
